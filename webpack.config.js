@@ -8,7 +8,7 @@ const TerserJsPlugin = require("terser-webpack-plugin");
 const ESLintPlugin = require('eslint-webpack-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-let config = {
+const config = {
     target: "web",
     entry: "./src/index.js",
     cache: {
