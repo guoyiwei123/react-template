@@ -7,6 +7,7 @@ const {
 const TerserJsPlugin = require("terser-webpack-plugin");
 const ESLintPlugin = require('eslint-webpack-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 let config = {
     target: "web",
     entry: "./src/index.js",
@@ -42,19 +43,6 @@ let config = {
                 use: [
                     MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'
                 ]
-            }, {
-                test: /\.(png|jpg|svg)/,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 4096,
-                            fallback: "file-loader",
-                            name: "[name].[ext]",
-                            outputPath: 'images',
-                        },
-                    },
-                ],
             }]
     },
     plugins: [
@@ -79,6 +67,11 @@ let config = {
             hash: true,
             cache: true,
         }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {from: "./public/favicon.ico", to: "./"}
+            ]
+        })
     ],
     resolve: {
         alias: {
@@ -96,11 +89,23 @@ let config = {
     }
 }
 if(process.env.NODE_ENV == "development"){
+    config.mode = "development";
+    config.devtool = "inline-source-map";
     config.watchOptions = {
         ignored: '**/node_modules',
     }
-    config.mode = "development";
-    config.devtool = "inline-source-map"
+    config.module.rules.push({
+        test: /\.(png|jpg|svg)/,
+        use: [
+            {
+                loader: 'file-loader',
+                options: {
+                    outputPath: 'images',
+                    name: "[name].[ext]"
+                }
+            }
+        ]
+    });
     config.devServer =  {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
@@ -113,6 +118,20 @@ if(process.env.NODE_ENV == "development"){
     }
 }else{
     config.mode = "production";
+    config.module.rules.push({
+        test: /\.(png|jpg|svg)/,
+        use: [
+            {
+                loader: 'url-loader',
+                options: {
+                    limit: 4096,
+                    fallback: "file-loader",
+                    name: "[name].[ext]",
+                    outputPath: 'images',
+                },
+            },
+        ],
+    });
     config.plugins.unshift(new CleanWebpackPlugin());
     config.optimization =  {
         minimizer: [new TerserJsPlugin({
