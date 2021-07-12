@@ -41,7 +41,7 @@ const config = {
             {
                 test: /\.(sc|c)ss$/,
                 use: [
-                    "cache-loader", MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'
+                    MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'
                 ]
             }]
     },
@@ -91,10 +91,13 @@ const config = {
 }
 if(process.env.NODE_ENV == "development"){
     config.mode = "development";
+    config.cache = {
+        type: "memory"
+    };
     config.devtool = "inline-source-map";
     config.watchOptions = {
         ignored: '**/node_modules',
-    }
+    };
     config.module.rules.push({
         test: /\.(png|jpg|svg)/,
         use: [
@@ -119,6 +122,12 @@ if(process.env.NODE_ENV == "development"){
     }
 }else{
     config.mode = "production";
+    config.cache = {
+        type: 'filesystem',
+        buildDependencies: {
+            config: [__filename]
+        }
+    };
     config.module.rules.push({
         test: /\.(png|jpg|svg)/,
         use: [
