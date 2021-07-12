@@ -68,11 +68,11 @@ const config = {
             cache: true,
         }),
         // 有图标资源时开启
-        // new CopyWebpackPlugin({
-        //     patterns: [
-        //         {from: "./public/favicon.ico", to: "./"}
-        //     ]
-        // })
+        new CopyWebpackPlugin({
+            patterns: [
+                {from: "./public/favicon.ico", to: "./", noErrorOnMissing: true}
+            ]
+        })
     ],
     resolve: {
         alias: {
