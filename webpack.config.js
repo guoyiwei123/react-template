@@ -1,9 +1,6 @@
 const path = require("path");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {
-    CleanWebpackPlugin
-} = require('clean-webpack-plugin');
 const TerserJsPlugin = require("terser-webpack-plugin");
 const ESLintPlugin = require('eslint-webpack-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
@@ -142,7 +139,9 @@ if(process.env.NODE_ENV == "development"){
             },
         ],
     });
-    config.plugins.unshift(new CleanWebpackPlugin());
+    config.output.clean = {
+        dry: true
+    };
     config.optimization =  {
         minimizer: [new TerserJsPlugin({
             parallel: true,
