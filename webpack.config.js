@@ -132,9 +132,8 @@ if(process.env.NODE_ENV == "development"){
                 loader: 'url-loader',
                 options: {
                     limit: 4096,
-                    fallback: "file-loader",
                     name: "[name].[ext]",
-                    outputPath: 'images',
+                    outputPath: 'images'
                 },
             },
         ],
