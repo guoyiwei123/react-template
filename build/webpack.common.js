@@ -18,11 +18,7 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: "happypack/loader"
-            },{
-                test: /\.(sc|c)ss$/,
-                use: ["css-loader", "sass-loader"]
             }
-
         ]
     },
     plugins: [
