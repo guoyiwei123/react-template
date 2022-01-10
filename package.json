@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "webpack -w --mode=development --progress",
-    "build": "webpack --config ./build/webpack.prod.js",
+    "build": "webpack --config ./build/webpack.prod.js --progress",
     "dev": "webpack serve --config ./build/webpack.dev.js"
   },
   "repository": {
@@ -25,7 +24,6 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "cache-loader": "^4.1.0",
-    "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^5.2.0",
     "css-minimizer-webpack-plugin": "^3.3.1",

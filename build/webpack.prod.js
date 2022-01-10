@@ -1,14 +1,14 @@
 const {merge} = require("webpack-merge");
 const TerserJsPlugin = require("terser-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const commonConfig = require("./webpack.common");
 
 module.exports = merge(commonConfig, {
     mode: "production",
     output: {
-        filename: 'js/[name].[contenthash].js'
+        filename: 'js/[name].[contenthash].js',
+        clean: true
     },
     cache: {
         type: "filesystem",
@@ -36,7 +36,6 @@ module.exports = merge(commonConfig, {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: 'css/[name].[contenthash].css'
         }),
