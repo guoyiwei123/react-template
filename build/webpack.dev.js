@@ -7,7 +7,7 @@ module.exports = merge(commonConfig, {
     module: {
         rules: [
         {
-            test: /\.scss/i,
+            test: /\.scss$/i,
             use: ["css-loader", "sass-loader"]
         },{
                 test: /\.(png|jpg|svg)$/i,
