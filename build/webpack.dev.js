@@ -6,10 +6,10 @@ module.exports = merge(commonConfig, {
     cache: false,
     module: {
         rules: [
-            {
-                test: /\.(sc|c)ss$/,
-                use: ["style-loader", "css-loader", "sass-loader"]
-            },{
+        {
+            test: /\.scss/i,
+            use: ["css-loader", "sass-loader"]
+        },{
                 test: /\.(png|jpg|svg)$/i,
                 use: [
                     {
