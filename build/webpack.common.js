@@ -64,7 +64,7 @@ module.exports = {
     ],
     resolve: {
         alias: {
-            "@assets": resolve(__dirname, "../src/assets"),
+            "@images": resolve(__dirname, "../src/images"),
             "@components": resolve(__dirname, "../src/components"),
             "@pages": resolve(__dirname, "../src/pages"),
             "@config": resolve(__dirname, "../src/config"),

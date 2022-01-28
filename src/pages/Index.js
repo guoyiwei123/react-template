@@ -5,6 +5,6 @@ function Index(){
             deadline.timeRemaining();
         });
     }, []);
-    return <img src={ require("@assets/images/icon_ac_label.png").default }/>;
+    return <img src={ require("@images/icon_ac_label.png").default }/>;
 }
 export default Index;

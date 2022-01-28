@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
-import "@assets/styles/index.scss";
+import "./styles/index.scss";
 import { Route, Switch, BrowserRouter as Router} from "react-router-dom";
 import routes from "@config/router";
 import ErrorCatch  from "./components/hoc/ErrorCatch";
