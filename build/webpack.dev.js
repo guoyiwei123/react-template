@@ -1,4 +1,3 @@
-const {resolve} = require("path");
 const {merge} = require("webpack-merge");
 const commonConfig = require("./webpack.common");
 module.exports = merge(commonConfig, {
@@ -31,6 +30,11 @@ module.exports = merge(commonConfig, {
             rewrites: [
                 { from: /^\/.*$/, to: "/index.html" },
             ]
+        },
+        client: {
+            overlay: {
+                warnings: false
+            }
         }
     },
     devtool: "inline-source-map"
